@@ -13,8 +13,11 @@ struct Class_ProjectApp: App {
 
     var body: some Scene {
         WindowGroup {
+            let tripVM = TripViewModel(context: persistenceController.container.viewContext)
+            let memoVM = MemoViewModel(context: persistenceController.container.viewContext)
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(tripVM)
+                .environmentObject(memoVM)
         }
     }
 }

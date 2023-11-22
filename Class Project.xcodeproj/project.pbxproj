@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A65C47D2B09C3B40098E659 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65C47C2B09C3B40098E659 /* MemoView.swift */; };
+		1A65C47F2B0C59420098E659 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65C47E2B0C59420098E659 /* MemoViewModel.swift */; };
+		1A65C49D2B0E12900098E659 /* TripsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65C49C2B0E12900098E659 /* TripsMapView.swift */; };
 		1A7B24DF2AE5C40A0057CFB5 /* Class_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B24DE2AE5C40A0057CFB5 /* Class_ProjectApp.swift */; };
 		1A7B24E12AE5C40A0057CFB5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B24E02AE5C40A0057CFB5 /* ContentView.swift */; };
 		1A7B24E32AE5C40B0057CFB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A7B24E22AE5C40B0057CFB5 /* Assets.xcassets */; };
@@ -18,8 +21,6 @@
 		1A7B25012AE5C40B0057CFB5 /* Class_ProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B25002AE5C40B0057CFB5 /* Class_ProjectUITestsLaunchTests.swift */; };
 		1A7B250E2AE5F8C30057CFB5 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B250D2AE5F8C30057CFB5 /* TripsView.swift */; };
 		1A7B25102AE5F9120057CFB5 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B250F2AE5F9120057CFB5 /* ExploreView.swift */; };
-		1A7B25122AE5F97D0057CFB5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B25112AE5F97D0057CFB5 /* MapView.swift */; };
-		1A7B25142AE5FB940057CFB5 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B25132AE5FB940057CFB5 /* Trip.swift */; };
 		1A7B25162AE5FBB90057CFB5 /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B25152AE5FBB90057CFB5 /* TripViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A65C47C2B09C3B40098E659 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
+		1A65C47E2B0C59420098E659 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
+		1A65C49C2B0E12900098E659 /* TripsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsMapView.swift; sourceTree = "<group>"; };
 		1A7B24DB2AE5C40A0057CFB5 /* Class Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Class Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A7B24DE2AE5C40A0057CFB5 /* Class_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class_ProjectApp.swift; sourceTree = "<group>"; };
 		1A7B24E02AE5C40A0057CFB5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,8 +59,6 @@
 		1A7B25002AE5C40B0057CFB5 /* Class_ProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class_ProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1A7B250D2AE5F8C30057CFB5 /* TripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
 		1A7B250F2AE5F9120057CFB5 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
-		1A7B25112AE5F97D0057CFB5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		1A7B25132AE5FB940057CFB5 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		1A7B25152AE5FBB90057CFB5 /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,10 +113,11 @@
 				1A7B24DE2AE5C40A0057CFB5 /* Class_ProjectApp.swift */,
 				1A7B24E02AE5C40A0057CFB5 /* ContentView.swift */,
 				1A7B250D2AE5F8C30057CFB5 /* TripsView.swift */,
-				1A7B25132AE5FB940057CFB5 /* Trip.swift */,
 				1A7B25152AE5FBB90057CFB5 /* TripViewModel.swift */,
+				1A65C49C2B0E12900098E659 /* TripsMapView.swift */,
+				1A65C47E2B0C59420098E659 /* MemoViewModel.swift */,
+				1A65C47C2B09C3B40098E659 /* MemoView.swift */,
 				1A7B250F2AE5F9120057CFB5 /* ExploreView.swift */,
-				1A7B25112AE5F97D0057CFB5 /* MapView.swift */,
 				1A7B24E22AE5C40B0057CFB5 /* Assets.xcassets */,
 				1A7B24E72AE5C40B0057CFB5 /* Persistence.swift */,
 				1A7B24E92AE5C40B0057CFB5 /* Class_Project.xcdatamodeld */,
@@ -278,14 +281,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A7B25122AE5F97D0057CFB5 /* MapView.swift in Sources */,
+				1A65C47D2B09C3B40098E659 /* MemoView.swift in Sources */,
+				1A65C47F2B0C59420098E659 /* MemoViewModel.swift in Sources */,
 				1A7B250E2AE5F8C30057CFB5 /* TripsView.swift in Sources */,
 				1A7B24E82AE5C40B0057CFB5 /* Persistence.swift in Sources */,
 				1A7B24E12AE5C40A0057CFB5 /* ContentView.swift in Sources */,
 				1A7B25162AE5FBB90057CFB5 /* TripViewModel.swift in Sources */,
-				1A7B25142AE5FB940057CFB5 /* Trip.swift in Sources */,
 				1A7B24EB2AE5C40B0057CFB5 /* Class_Project.xcdatamodeld in Sources */,
 				1A7B25102AE5F9120057CFB5 /* ExploreView.swift in Sources */,
+				1A65C49D2B0E12900098E659 /* TripsMapView.swift in Sources */,
 				1A7B24DF2AE5C40A0057CFB5 /* Class_ProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +457,7 @@
 				DEVELOPMENT_TEAM = U9L7NZJZGW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby landmarks on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -482,6 +487,7 @@
 				DEVELOPMENT_TEAM = U9L7NZJZGW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby landmarks on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

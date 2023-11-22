@@ -8,38 +8,53 @@
 import SwiftUI
 
 struct TripsView: View {
-    @ObservedObject var viewModel = TripViewModel()
+    @EnvironmentObject var viewModel:TripViewModel
     
     @State private var showingAddTrip = false
+    @State private var showingMap = false
     
     var body: some View {
-           NavigationView {
-               List {
-                   ForEach(viewModel.trips) { trip in
-                       NavigationLink(destination: TripDetailView(trip: trip)) {
-                           VStack(alignment: .leading) {
-                               Text(trip.destination)
-                                   .font(.headline)
-                               Text("\(trip.startDate, formatter: DateFormatter.shortDate) - \(trip.endDate, formatter: DateFormatter.shortDate)")
+       NavigationView {
+           List {
+               ForEach(viewModel.trips, id: \.objectID) { trip in
+                   NavigationLink(destination: TripDetailView(trip: trip)) {
+                       VStack(alignment: .leading) {
+                           Text(trip.destination ?? "Unknown Destination")
+                               .font(.headline)
+                           if let startDate = trip.startDate, let endDate = trip.endDate {
+                               Text("\(startDate, formatter: DateFormatter.shortDate) - \(endDate, formatter: DateFormatter.shortDate)")
+                                   .font(.subheadline)
+                                   .foregroundColor(.gray)
+                           } else {
+                               Text("Unknown Dates")
                                    .font(.subheadline)
                                    .foregroundColor(.gray)
                            }
                        }
                    }
-                   .onDelete(perform: viewModel.removeTrip)
                }
-               .navigationTitle("My Trips")
-               .navigationBarItems(
-                   leading: EditButton(),
-                   trailing: Button(action: { showingAddTrip = true }) {
-                       Image(systemName: "plus")
+               .onDelete(perform: viewModel.removeTrip)
+           }
+           .navigationTitle("My Trips")
+           .navigationBarItems(
+               leading: EditButton(),
+               trailing: HStack{
+                   Button(action: { showingMap = true}){
+                       Image(systemName: "map")
                    }
-               )
-           }
-           .sheet(isPresented: $showingAddTrip) {
-               AddTripView(viewModel: viewModel)
-           }
+                   Button(action: { showingAddTrip = true }) {
+                      Image(systemName: "plus")
+                   }
+               }
+           )
        }
+       .sheet(isPresented: $showingAddTrip) {
+           AddTripView()
+       }
+       .sheet(isPresented: $showingMap){
+           TripsMapView()
+       }
+   }
 }
 
 struct TripDetailView: View {
@@ -47,7 +62,7 @@ struct TripDetailView: View {
     
     var body: some View {
         VStack {
-            Text(trip.destination)
+            Text(trip.destination!)
                 .font(.largeTitle)
                 .padding(.bottom, 20)
             
@@ -57,13 +72,16 @@ struct TripDetailView: View {
                     Text("End Date:")
                 }
                 VStack(alignment: .leading) {
-                    Text("\(trip.startDate, formatter: DateFormatter.shortDate)")
-                    Text("\(trip.endDate, formatter: DateFormatter.shortDate)")
+                    Text("\(trip.startDate!, formatter: DateFormatter.shortDate)")
+                    Text("\(trip.endDate!, formatter: DateFormatter.shortDate)")
                 }
             }
             .padding(.bottom, 20)
             
             Spacer()
+            
+            MemoView(trip: trip)
+                .background(.clear)
         }
         .padding()
         .navigationTitle("Trip Details")
@@ -72,35 +90,54 @@ struct TripDetailView: View {
 
 struct AddTripView: View {
     @Environment(\.presentationMode) var presentationMode
-    
-    @ObservedObject var viewModel: TripViewModel
-    
+    @EnvironmentObject var viewModel: TripViewModel
     @State private var destination = ""
     @State private var startDate = Date()
     @State private var endDate = Date()
-    
+    @State private var memos: [Memo] = []
+    @State private var showingAddMemo = false
+    @State private var newTrip: Trip?
+
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Destination")) {
                     TextField("Enter destination", text: $destination)
                 }
-                
                 Section(header: Text("Dates")) {
                     DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                     DatePicker("End Date", selection: $endDate, displayedComponents: .date)
                 }
+                Section(header: Text("Memos")) {
+                    ForEach(memos, id: \.self) { memo in
+                        Text(memo.title ?? "No Title")
+                    }
+                    Button("Add Memo") {
+                        let createdTrip = viewModel.addTrip(destination: destination, startDate: startDate, endDate: endDate, memos: memos)
+                        self.newTrip = createdTrip
+                        showingAddMemo = true
+                    }
+                    
+                }
             }
-            .navigationTitle("Add Trip")
+            .navigationBarTitle("Add Trip")
             .navigationBarItems(leading: Button("Cancel") {
                 presentationMode.wrappedValue.dismiss()
             }, trailing: Button("Add") {
-                viewModel.addTrip(destination: destination, startDate: startDate, endDate: endDate)
+                if newTrip == nil {
+                    let createdTrip = viewModel.addTrip(destination: destination, startDate: startDate, endDate: endDate, memos: memos)
+                    self.newTrip = createdTrip
+                }
                 presentationMode.wrappedValue.dismiss()
             })
+            .sheet(isPresented: $showingAddMemo) {
+                AddMemoView(trip: newTrip!, memos: $memos)
+            }
         }
     }
 }
+
+
 
 extension DateFormatter {
     static var shortDate: DateFormatter {
